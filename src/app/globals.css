@@ -5,6 +5,22 @@
   --foreground: #171717;
 }
 
+/* 1. Definisikan variabel dasar di luar @theme */
+:root {
+  /* Default Mobile Speed */
+  --speed-marquee: 6s;
+  --speed-marquee-reverse: 8s;
+}
+
+/* 2. Update variabel berdasarkan ukuran layar */
+@media (min-width: 768px) {
+  :root {
+    --speed-marquee: 30s;
+    --speed-marquee-reverse: 35s;
+  }
+}
+
+/* 3. Masukkan HANYA variabel dan keyframes ke dalam @theme */
 @theme {
   /* Brand Colors */
   --color-brand-purple: #1c0a53;
@@ -18,24 +34,21 @@
   @keyframes blink {
     50% { border-color: transparent; }
   }
-
-  /* Custom Animations */
-  --animate-typing: typing 3.5s steps(40, end), blink .75s step-end infinite;
-
-  /* Animasi ke Kiri (Normal) */
   @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
-
-  /* Animasi ke Kanan (Reverse) */
   @keyframes marquee-reverse {
     from { transform: translateX(-50%); }
     to { transform: translateX(0); }
   }
 
-  --animate-marquee: marquee 40s linear infinite;
-  --animate-marquee-reverse: marquee-reverse 45s linear infinite;
+  /* Custom Animations */
+  --animate-typing: typing 3.5s steps(40, end), blink .75s step-end infinite;
+  
+  /* Panggil variabel CSS yang sudah kita definisikan di atas */
+  --animate-marquee: marquee var(--speed-marquee) linear infinite;
+  --animate-marquee-reverse: marquee-reverse var(--speed-marquee-reverse) linear infinite;
 }
 
 /* Base styles for the typing effect */
