@@ -5,6 +5,38 @@
   --foreground: #171717;
 }
 
+@theme {
+  /* Brand Colors */
+  --color-brand-purple: #1c0a53;
+  --color-brand-green: #0f7d3d;
+
+  /* Keyframes */
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+
+  /* Custom Animations */
+  --animate-typing: typing 3.5s steps(40, end), blink .75s step-end infinite;
+
+  /* Tambahkan animasi marquee */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  --animate-marquee: marquee 30s linear infinite;
+}
+
+/* Base styles for the typing effect */
+.animate-typing {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
