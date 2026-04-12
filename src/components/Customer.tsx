@@ -3,56 +3,69 @@ import React from 'react';
 import Image from 'next/image';
 
 const Customers = () => {
-  // List nama logo sesuai gambar (bisa diganti dengan path file asli nanti)
   const logos = [
     { name: "Waskita", src: "/images/company/waskita.png" },
     { name: "Pelindo", src: "/images/company/pelindo.png" },
     { name: "Sugar Group", src: "/images/company/sgp.png" },
     { name: "AKR", src: "/images/company/akr.png" },
-    { name: "Pelindo", src: "/images/company/pelindo.png" },
-    { name: "GGF", src: "/images/company/ggf.jpg" },
-    // ... tambahkan sisanya
+    { name: "GGF", src: "/images/company/GGF.jpg" },
+    { name: "Torabika", src: "/images/company/torabika.png" },
+    { name: "Kimia Farma", src: "/images/company/kimia-farma.png" },
+    { name: "Nestle", src: "/images/company/nestle.png" },
   ];
+
+  // Bagi logo menjadi dua kelompok
+  const firstRow = logos.slice(0, Math.ceil(logos.length / 2));
+  const secondRow = logos.slice(Math.ceil(logos.length / 2));
 
   return (
     <section className="mt-12 py-20 bg-slate-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-12 text-center">
-        <span className="text-brand-green font-black text-sm uppercase tracking-[0.3em]">Track Record</span>
+        <span className="text-brand-green font-black text-sm uppercase tracking-[0.1em]">Track Record</span>
         <h2 className="text-3xl md:text-4xl font-black text-brand-purple mt-2">Our Trusted Customers</h2>
-        {/* <div className="h-1.5 w-20 bg-brand-green mx-auto mt-4 rounded-full" /> */}
       </div>
 
-      {/* Container Slider */}
-      <div className="relative flex overflow-hidden group">
-        <div className="absolute inset-y-0 left-0 w-20 md:w-40 bg-gradient-to-r from-slate-50 to-transparent z-10" />
-        <div className="absolute inset-y-0 right-0 w-20 md:w-40 bg-gradient-to-l from-slate-50 to-transparent z-10" />
+      {/* Wrapper untuk dua baris */}
+      <div className="flex flex-col gap-8 relative">
+        {/* Gradient Mask (Efek Fade) */}
+        <div className="absolute inset-y-0 left-0 w-20 md:w-60 bg-gradient-to-r from-slate-50 to-transparent z-10" />
+        <div className="absolute inset-y-0 right-0 w-20 md:w-60 bg-gradient-to-l from-slate-50 to-transparent z-10" />
 
-        <div className="flex animate-marquee whitespace-nowrap gap-12 md:gap-20 py-4 items-center">
-          {[...logos, ...logos].map((logo, index) => (
-            <div 
-              key={index} 
-              className="flex-shrink-0 flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-            >
-              {/* Gunakan Next.js Image */}
-              <div className="relative h-12 md:h-16 w-32 md:w-40 flex items-center justify-center">
-                <Image
-                  src={logo.src}
-                  alt={`Logo ${logo.name}`}
-                  fill
-                  className="object-contain" // Penting supaya logo tidak gepeng
-                  sizes="(max-width: 768px) 120px, 160px"
-                />
-              </div>
-            </div>
+        {/* BARIS 1: Gerak ke Kiri */}
+        <div className="flex animate-marquee whitespace-nowrap gap-12 md:gap-20 items-center">
+          {[...firstRow, ...firstRow, ...firstRow].map((logo, index) => (
+            <LogoItem key={`row1-${index}`} logo={logo} />
+          ))}
+        </div>
+
+        {/* BARIS 2: Gerak ke Kanan (Reverse) */}
+        <div className="flex animate-marquee-reverse whitespace-nowrap gap-12 md:gap-20 items-center">
+          {[...secondRow, ...secondRow, ...secondRow].map((logo, index) => (
+            <LogoItem key={`row2-${index}`} logo={logo} />
           ))}
         </div>
       </div>
       
-      <p className="text-center text-slate-400 text-xs mt-12 font-medium tracking-widest">
-        DAN LEBIH DARI 100+ PERUSAHAAN LAINNYA TELAH MEMPERCAYAI KAMI
+      <p className="text-center text-slate-400 text-[10px] md:text-xs mt-16 font-bold tracking-widest uppercase opacity-70">
+        Dan lebih dari 100+ perusahaan lainnya telah mempercayai kami
       </p>
     </section>
   );
 };
+
+// Sub-komponen untuk item logo agar kode lebih bersih
+const LogoItem = ({ logo }: { logo: { name: string, src: string } }) => (
+  <div className="flex-shrink-0 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer">
+    <div className="relative h-10 md:h-14 w-28 md:w-40 flex items-center justify-center">
+      <Image
+        src={logo.src}
+        alt={`Logo ${logo.name}`}
+        fill
+        className="object-contain"
+        sizes="(max-width: 768px) 110px, 160px"
+      />
+    </div>
+  </div>
+);
 
 export default Customers;

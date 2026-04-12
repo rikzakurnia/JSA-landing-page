@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const About = () => {
   return (
-    <section className="py-24 px-6 max-w-7xl mx-auto overflow-hidden">
+    <section className="py-24 px-6 xl:px-16 max-w-7xl mx-auto overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
         {/* LEFT SIDE: IMAGE COLLAGE */}
@@ -13,7 +13,7 @@ const About = () => {
           <div className="absolute -top-6 -left-6 w-full h-full bg-brand-purple/5 rounded-3xl -z-10" />
           
           {/* Main Image Container */}
-          <div className="relative max-h-[640px] rounded-2xl overflow-hidden shadow-2xl border-l-8 border-brand-purple aspect-[4/5] sm:aspect-square lg:aspect-[4/5]">
+          <div className="relative max-h-[540px] rounded-2xl overflow-hidden shadow-2xl border-l-8 border-brand-purple aspect-[4/5] sm:aspect-square lg:aspect-[4/5]">
             <Image 
               src="/images/worker-1.png" // Ganti dengan gambar personil kalibrasi
               alt="Tim Kalibrasi JSA"
@@ -42,13 +42,13 @@ const About = () => {
         {/* RIGHT SIDE: CONTENT */}
         <div className="flex flex-col gap-6">
           <div className="space-y-2">
-            <span className="text-brand-green font-black text-sm uppercase tracking-[0.3em]">Tentang JSA</span>
-            <h2 className="text-4xl md:text-5xl font-black text-brand-purple leading-tight">
+            <span className="text-brand-green font-black text-xs uppercase">Tentang JSA</span>
+            <h2 className="text-4xl md:text-4xl font-black text-brand-purple leading-tight">
               Introduction
             </h2>
           </div>
 
-          <div className="space-y-4 text-slate-600 leading-relaxed text-sm md:text-base">
+          <div className="space-y-4 text-slate-600 leading-relaxed text-sm md:text-sm">
             <p>
               <span className="font-bold text-brand-purple">CV. Jasa Sukses Abadi (JSA)</span> adalah perusahaan swasta nasional yang didirikan di kota Bandar Lampung pada tahun 2014 berdasarkan Akta Pendirian No. 17 Notaris Eli Elyawati Garpi, S.H, M.Kn.
             </p>
@@ -67,7 +67,7 @@ const About = () => {
                 <img src='/images/logo-kan.webp' ></img>
              </div>
              <div>
-               <p className="text-brand-purple font-black text-lg">Terakreditasi KAN</p>
+               <p className="text-brand-purple font-black text-md">Terakreditasi KAN</p>
                <p className="text-slate-400 text-xs font-medium uppercase tracking-widest">ISO/IEC 17025:2017</p>
              </div>
           </div>

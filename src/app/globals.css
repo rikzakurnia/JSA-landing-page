@@ -22,12 +22,20 @@
   /* Custom Animations */
   --animate-typing: typing 3.5s steps(40, end), blink .75s step-end infinite;
 
-  /* Tambahkan animasi marquee */
+  /* Animasi ke Kiri (Normal) */
   @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
-  --animate-marquee: marquee 30s linear infinite;
+
+  /* Animasi ke Kanan (Reverse) */
+  @keyframes marquee-reverse {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 45s linear infinite;
 }
 
 /* Base styles for the typing effect */

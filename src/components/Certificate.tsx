@@ -6,22 +6,22 @@ import { ShieldCheck, Calendar, FileText, ExternalLink } from 'lucide-react';
 const Certificate = () => {
   return (
     <section className="mt-12 py-20 bg-white border-t border-slate-50">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 xl:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           
           {/* KOLOM KIRI: INFO & DETAIL */}
           <div className="order-2 lg:order-1">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-green/10 text-brand-green mb-6">
               <ShieldCheck size={16} className="font-bold" />
-              <span className="text-xs font-bold uppercase tracking-widest">Verified Accreditation</span>
+              <span className="text-xs font-bold uppercase ">Verified Accreditation</span>
             </div>
             
-            <h2 className="text-4xl md:text-5xl font-black text-brand-purple mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-black text-brand-purple mb-6 leading-tight">
               Komitmen pada <br />
               <span className="text-brand-green">Standar Global</span>
             </h2>
             
-            <p className="text-slate-600 mb-10 leading-relaxed">
+            <p className="text-slate-600 mb-10 text-sm leading-relaxed">
               Sebagai Laboratorium Kalibrasi yang terakreditasi secara resmi, kami menjamin hasil pengukuran yang akurat, tertelusur, dan diakui secara nasional maupun internasional melalui standar <span className="font-bold text-brand-purple">ISO/IEC 17025:2017</span>.
             </p>
 
@@ -30,13 +30,13 @@ const Certificate = () => {
               <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 group hover:border-brand-green transition-colors">
                 <FileText className="text-brand-green mb-3" size={24} />
                 <p className="text-xs text-slate-400 font-bold uppercase mb-1">Nomor Akreditasi</p>
-                <p className="text-brand-purple font-black">LK-257-IDN</p>
+                <p className="text-brand-purple text-xs font-black">LK-257-IDN</p>
               </div>
               
               <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 group hover:border-brand-green transition-colors">
                 <Calendar className="text-brand-green mb-3" size={24} />
                 <p className="text-xs text-slate-400 font-bold uppercase mb-1">Masa Berlaku</p>
-                <p className="text-brand-purple font-black">Hingga 22 Mei 2027</p>
+                <p className="text-brand-purple text-xs  font-black">Hingga 22 Mei 2027</p>
               </div>
             </div>
 

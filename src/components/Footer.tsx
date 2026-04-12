@@ -19,7 +19,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-brand-purple text-white pt-24 pb-12 px-6">
+    <footer className="bg-brand-purple text-white pt-24 pb-12 px-6 xl:px-16">
       <div className="max-w-7xl mx-auto">
         
         {/* GRID UTAMA */}

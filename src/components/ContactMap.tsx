@@ -4,7 +4,7 @@ import { MapPin, Phone, Mail } from 'lucide-react';
 
 const ContactMap = () => {
   return (
-    <section className="py-20 md:py-32 px-6 max-w-7xl mx-auto">
+    <section className="py-20 md:py-32 px-6 xl:px-16 max-w-7xl mx-auto">
       {/* Container utama dengan gap yang luas */}
       <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-stretch">
         
@@ -26,16 +26,16 @@ const ContactMap = () => {
         {/* KOLOM KANAN (Desktop) / BAWAH (Mobile): INFORMASI KANTOR */}
         <div className="lg:w-1/3 flex flex-col justify-center">
           <div className="mb-10">
-            <span className="text-brand-green font-bold text-xs md:text-sm uppercase tracking-[0.2em]">Contact Us</span>
-            <h2 className="text-4xl md:text-5xl font-black text-brand-purple mt-2 mb-6">Kantor Kami</h2>
+            <span className="text-brand-green font-bold text-xs md:text-xs uppercase tracking-[0.1em]">Contact Us</span>
+            <h2 className="text-3xl md:text-4xl font-black text-brand-purple mt-2 mb-6">Kantor Kami</h2>
             <div className="h-1.5 w-20 bg-brand-green rounded-full" />
           </div>
 
           <div className="space-y-10">
             {/* Nama & Deskripsi */}
             <div>
-              <h3 className="text-2xl font-black text-brand-purple mb-3 tracking-tight">CV Jasa Sukses Abadi</h3>
-              <p className="text-slate-500 text-sm md:text-base leading-relaxed">
+              <h3 className="text-xl font-black text-brand-purple mb-3 tracking-tight">CV Jasa Sukses Abadi</h3>
+              <p className="text-slate-500 text-sm md:text-sm leading-relaxed">
                 Penyedia layanan kalibrasi terpercaya dengan standar akurasi tinggi untuk mendukung kualitas dan keandalan alat ukur Anda.
               </p>
             </div>
@@ -48,7 +48,7 @@ const ContactMap = () => {
                 </div>
                 <div>
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Alamat Workshop</p>
-                  <p className="text-sm md:text-base text-brand-purple font-semibold leading-relaxed">
+                  <p className="text-sm md:text-sm text-brand-purple font-semibold leading-relaxed">
                     Gang Militer, Perumahan Nuwo Sriwijaya Blok A No. 2 Hajimena, Natar, Lampung Selatan, Lampung
                   </p>
                 </div>
@@ -60,7 +60,7 @@ const ContactMap = () => {
                 </div>
                 <div>
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Telepon / WA</p>
-                  <p className="text-sm md:text-base text-brand-purple font-black">+62 812 1313 5257</p>
+                  <p className="text-sm md:text-sm text-brand-purple font-black">+62 812 1313 5257</p>
                 </div>
               </div>
 
@@ -70,7 +70,7 @@ const ContactMap = () => {
                 </div>
                 <div>
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Email Resmi</p>
-                  <p className="text-sm md:text-base text-brand-purple font-black">jsa.lpg@gmail.com</p>
+                  <p className="text-sm md:text-sm text-brand-purple font-black">jsa.lpg@gmail.com</p>
                 </div>
               </div>
             </div>
