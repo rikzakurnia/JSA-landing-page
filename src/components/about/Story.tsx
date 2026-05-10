@@ -20,7 +20,7 @@ const AboutStory = () => {
           <div className="w-full lg:w-1/2 relative">
             <div className="aspect-[4/3] relative rounded-3xl overflow-hidden shadow-2xl">
               <Image 
-                src="/images/jsa-in-action.jpeg" 
+                src="/images/JSA-in-action.jpeg" 
                 alt="Proses Kalibrasi Tangki" 
                 fill 
                 className="object-cover hover:scale-105 transition-transform duration-700"
