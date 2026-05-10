@@ -67,7 +67,7 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             <NavLink href="/" label="Home" isScrolled={isScrolled} />
-            <NavLink href="/about" label="Tentang" isScrolled={isScrolled} />
+            <NavLink href="/about" label="Tentang Kami" isScrolled={isScrolled} />
             
             <div className="relative" onMouseEnter={() => setActiveDropdown(true)} onMouseLeave={() => setActiveDropdown(false)}>
               <button className={`flex items-center gap-1 font-semibold hover:text-brand-green transition-colors ${isScrolled ? "text-brand-purple" : "text-white"}`}>

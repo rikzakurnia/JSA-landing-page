@@ -12,9 +12,15 @@ const Customers = () => {
     { name: "Torabika", src: "/images/company/torabika.png" },
     { name: "Kimia Farma", src: "/images/company/kimia-farma.png" },
     { name: "Nestle", src: "/images/company/nestle.png" },
+    { name: "Fermentech", src: "/images/company/fermentech.png" },
+    { name: "Gold Coin", src: "/images/company/gold-coin.webp" },
+    { name: "hokkan", src: "/images/company/hokkan.jpg" },
+    { name: "PP", src: "/images/company/PP.png" },
+    { name: "PUPR", src: "/images/company/pupr.png" },
+    { name: "WIKA", src: "/images/company/wika.png" },
   ];
 
-  // Bagi logo menjadi dua kelompok
+  // Bagi logo menjadi dua baris
   const firstRow = logos.slice(0, Math.ceil(logos.length / 2));
   const secondRow = logos.slice(Math.ceil(logos.length / 2));
 
@@ -25,24 +31,41 @@ const Customers = () => {
         <h2 className="text-3xl md:text-4xl font-black text-brand-purple mt-2">Our Trusted Customers</h2>
       </div>
 
-      {/* Wrapper untuk dua baris */}
       <div className="flex flex-col gap-8 relative">
-        {/* Gradient Mask (Efek Fade) */}
-        <div className="absolute inset-y-0 left-0 w-20 md:w-60 bg-gradient-to-r from-slate-50 to-transparent z-10" />
-        <div className="absolute inset-y-0 right-0 w-20 md:w-60 bg-gradient-to-l from-slate-50 to-transparent z-10" />
+        {/* Gradient Mask (Efek Fade di pinggir) */}
+        <div className="absolute inset-y-0 left-0 w-20 md:w-60 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-20 md:w-60 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
 
         {/* BARIS 1: Gerak ke Kiri */}
-        <div className="flex animate-marquee whitespace-nowrap gap-12 md:gap-20 items-center">
-          {[...firstRow, ...firstRow, ...firstRow].map((logo, index) => (
-            <LogoItem key={`row1-${index}`} logo={logo} />
-          ))}
+        <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
+          {/* Group 1 */}
+          <div className="flex items-center gap-12 md:gap-20 pr-12 md:pr-20">
+            {firstRow.map((logo, index) => (
+              <LogoItem key={`row1-g1-${index}`} logo={logo} />
+            ))}
+          </div>
+          {/* Group 2 (Duplicate for perfect loop) */}
+          <div className="flex items-center gap-12 md:gap-20 pr-12 md:pr-20">
+            {firstRow.map((logo, index) => (
+              <LogoItem key={`row1-g2-${index}`} logo={logo} />
+            ))}
+          </div>
         </div>
 
         {/* BARIS 2: Gerak ke Kanan (Reverse) */}
-        <div className="flex animate-marquee-reverse whitespace-nowrap gap-12 md:gap-20 items-center">
-          {[...secondRow, ...secondRow, ...secondRow].map((logo, index) => (
-            <LogoItem key={`row2-${index}`} logo={logo} />
-          ))}
+        <div className="flex w-max animate-marquee-reverse hover:[animation-play-state:paused]">
+          {/* Group 1 */}
+          <div className="flex items-center gap-12 md:gap-20 pr-12 md:pr-20">
+            {secondRow.map((logo, index) => (
+              <LogoItem key={`row2-g1-${index}`} logo={logo} />
+            ))}
+          </div>
+          {/* Group 2 (Duplicate for perfect loop) */}
+          <div className="flex items-center gap-12 md:gap-20 pr-12 md:pr-20">
+            {secondRow.map((logo, index) => (
+              <LogoItem key={`row2-g2-${index}`} logo={logo} />
+            ))}
+          </div>
         </div>
       </div>
       
@@ -53,7 +76,6 @@ const Customers = () => {
   );
 };
 
-// Sub-komponen untuk item logo agar kode lebih bersih
 const LogoItem = ({ logo }: { logo: { name: string, src: string } }) => (
   <div className="flex-shrink-0 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer">
     <div className="relative h-10 md:h-14 w-28 md:w-40 flex items-center justify-center">

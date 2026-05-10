@@ -8,15 +8,16 @@
 /* 1. Definisikan variabel dasar di luar @theme */
 :root {
   /* Default Mobile Speed */
-  --speed-marquee: 6s;
-  --speed-marquee-reverse: 8s;
+  --speed-marquee: 15s;
+  --speed-marquee-reverse: 20s;
 }
 
 /* 2. Update variabel berdasarkan ukuran layar */
 @media (min-width: 768px) {
   :root {
-    --speed-marquee: 30s;
-    --speed-marquee-reverse: 35s;
+    /* Desktop Speed. Changed from 30s to 15s */
+    --speed-marquee: 40s;
+    --speed-marquee-reverse: 45s;
   }
 }
 
@@ -28,11 +29,15 @@
 
   /* Keyframes */
   @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
+    from { max-width: 0; }
+    to { max-width: 100%; }
   }
   @keyframes blink {
     50% { border-color: transparent; }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
   @keyframes marquee {
     from { transform: translateX(0); }
@@ -44,9 +49,10 @@
   }
 
   /* Custom Animations */
+  /* Using max-width instead of width for safer responsive typing */
   --animate-typing: typing 3.5s steps(40, end), blink .75s step-end infinite;
+  --animate-fade-up: fadeUp 0.8s ease-out forwards;
   
-  /* Panggil variabel CSS yang sudah kita definisikan di atas */
   --animate-marquee: marquee var(--speed-marquee) linear infinite;
   --animate-marquee-reverse: marquee-reverse var(--speed-marquee-reverse) linear infinite;
 }
