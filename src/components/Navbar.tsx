@@ -34,85 +34,103 @@ const Navbar = () => {
   const services = ["Kalibrasi", "Tera", "Konsultan", "Training", "Maintenance & Repair"];
 
   return (
-    // Header menggunakan transform untuk mengangkat seluruh bar saat scroll
-    <header className={`fixed w-full z-50 transition-transform duration-500 ${
-      isScrolled ? "-translate-y-[40px]" : "translate-y-0"
-    }`}>
-      {/* 1. TOP INFO BAR - Fixed height 40px agar sinkron dengan transform */}
-      <div className="bg-brand-purple text-white/90 h-[40px] px-6 text-[10px] md:text-[11px] font-medium flex items-center border-b border-white/10">
-        <div className="max-w-7xl mx-auto w-full flex justify-between items-center uppercase tracking-wider">
-          <span className="truncate pr-4">Gang Militer, Perumahan Nuwo Sriwijaya, Lampung Selatan</span>
-          <div className="flex items-center gap-4 shrink-0">
-            <a href="#" className="hover:text-brand-green transition-colors"><InstagramIcon className="w-3.5 h-3.5" /></a>
-            <a href="#" className="hover:text-brand-green transition-colors"><TiktokIcon className="w-3.5 h-3.5" /></a>
+    // Membungkus header dan sidebar mobile dengan Fragment agar tidak terjadi bentrok styling CSS Stacking Context
+    <>
+      <header className={`fixed w-full z-40 transition-transform duration-500 ${
+        isScrolled ? "-translate-y-[40px]" : "translate-y-0"
+      }`}>
+        {/* 1. TOP INFO BAR */}
+        <div className="bg-brand-purple text-white/90 h-[40px] px-6 text-[10px] md:text-[11px] font-medium flex items-center border-b border-white/10">
+          <div className="max-w-7xl mx-auto w-full flex justify-between items-center uppercase tracking-wider">
+            <span className="truncate pr-4">Gang Militer, Perumahan Nuwo Sriwijaya, Lampung Selatan</span>
+            <div className="flex items-center gap-4 shrink-0">
+              <a href="#" className="hover:text-brand-green transition-colors"><InstagramIcon className="w-3.5 h-3.5" /></a>
+              <a href="#" className="hover:text-brand-green transition-colors"><TiktokIcon className="w-3.5 h-3.5" /></a>
+            </div>
+          </div>
+        </div>
+
+        {/* 2. MAIN NAVBAR */}
+        <nav className={`transition-all duration-300 ${
+          isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg py-3" : "bg-transparent py-5"
+        }`}>
+          <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <Link href="/" className="relative h-8 w-32 sm:h-10 sm:w-44">
+              <Image 
+                src="/images/logo.png" 
+                alt="Logo" 
+                fill 
+                className={`object-contain transition-all duration-500 ${!isScrolled && "brightness-0 invert"}`} 
+                priority 
+              />
+            </Link>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-8">
+              <NavLink href="/" label="Home" isScrolled={isScrolled} />
+              <NavLink href="/about" label="Tentang Kami" isScrolled={isScrolled} />
+              
+              <div className="relative" onMouseEnter={() => setActiveDropdown(true)} onMouseLeave={() => setActiveDropdown(false)}>
+                {/* Mengubah button menjadi Link agar "Layanan" bisa di-klik sendiri */}
+                <Link href="/services" className={`flex items-center gap-1 font-semibold hover:text-brand-green transition-colors ${isScrolled ? "text-brand-purple" : "text-white"}`}>
+                  Layanan <ChevronDown size={14} className={`transition-transform ${activeDropdown ? 'rotate-180' : ''}`} />
+                </Link>
+                <div className={`absolute top-full -left-4 w-56 pt-4 transition-all ${activeDropdown ? "opacity-100 visible" : "opacity-0 invisible"}`}>
+                  <div className="bg-white rounded-xl shadow-2xl border border-slate-100 overflow-hidden p-2">
+                    {services.map((item) => (
+                      <Link key={item} href={`/services/${item.toLowerCase().replace(/\s+/g, '-')}`} className="block px-4 py-2 text-sm text-brand-purple hover:bg-slate-50 hover:text-brand-green rounded-lg font-bold transition-colors">
+                        {item}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Artikel di-comment sementara */}
+              {/* <NavLink href="/articles" label="Artikel" isScrolled={isScrolled} /> */}
+
+              <Link href="/contact" className="px-6 py-2 bg-brand-green hover:bg-brand-purple text-white text-xs font-black rounded-full transition-all uppercase tracking-tight">Contact Us</Link>
+            </div>
+
+            {/* Mobile Toggle */}
+            <button className={`md:hidden p-2 rounded-lg ${isScrolled ? "text-brand-purple" : "text-brand-green"}`} onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      {/* Mobile Sidebar dikeluarkan dari <header> agar tidak terpengaruh CSS Transform */}
+      <div className={`md:hidden fixed inset-0 top-0 bg-white transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"} z-[60]`}>
+        <div className="flex flex-col h-full p-8 overflow-y-auto">
+          <div className="flex justify-between items-center mb-12">
+            <div className="h-8 w-32 relative"><Image src="/images/logo.png" alt="Logo" fill className="object-contain" /></div>
+            <button onClick={() => setIsOpen(false)} className="text-brand-purple"><X size={32} /></button>
+          </div>
+          <div className="flex flex-col gap-6">
+            <Link href="/" className="text-3xl font-black text-brand-purple" onClick={() => setIsOpen(false)}>Home</Link>
+            <Link href="/about" className="text-3xl font-black text-brand-purple" onClick={() => setIsOpen(false)}>Tentang Kami</Link>
+            
+            {/* Layanan ditambahkan sebagai parent link di mobile */}
+            <div className="flex flex-col">
+              <Link href="/services" className="text-3xl font-black text-brand-purple" onClick={() => setIsOpen(false)}>Layanan</Link>
+              <div className="mt-4 space-y-4 border-l-4 border-brand-green pl-6 py-2">
+                {services.map(s => (
+                  <Link key={s} href={`/services/${s.toLowerCase().replace(/\s+/g, '-')}`} className="block text-lg font-bold text-slate-600" onClick={() => setIsOpen(false)}>
+                    {s}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Artikel di mobile juga di-comment */}
+            {/* <Link href="/articles" className="text-3xl font-black text-brand-purple" onClick={() => setIsOpen(false)}>Artikel</Link> */}
+
+            <Link href="/contact" className="mt-4 w-full py-4 bg-brand-purple text-center text-white rounded-2xl font-black text-xl" onClick={() => setIsOpen(false)}>Contact Us</Link>
           </div>
         </div>
       </div>
-
-      {/* 2. MAIN NAVBAR */}
-      <nav className={`transition-all duration-300 ${
-        isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg py-3" : "bg-transparent py-5"
-      }`}>
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <Link href="/" className="relative h-8 w-32 sm:h-10 sm:w-44">
-            <Image 
-              src="/images/logo.png" 
-              alt="Logo" 
-              fill 
-              className={`object-contain transition-all duration-500 ${!isScrolled && "brightness-0 invert"}`} 
-              priority 
-            />
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            <NavLink href="/" label="Home" isScrolled={isScrolled} />
-            <NavLink href="/about" label="Tentang Kami" isScrolled={isScrolled} />
-            
-            <div className="relative" onMouseEnter={() => setActiveDropdown(true)} onMouseLeave={() => setActiveDropdown(false)}>
-              <button className={`flex items-center gap-1 font-semibold hover:text-brand-green transition-colors ${isScrolled ? "text-brand-purple" : "text-white"}`}>
-                Layanan <ChevronDown size={14} className={`transition-transform ${activeDropdown ? 'rotate-180' : ''}`} />
-              </button>
-              <div className={`absolute top-full -left-4 w-56 pt-4 transition-all ${activeDropdown ? "opacity-100 visible" : "opacity-0 invisible"}`}>
-                <div className="bg-white rounded-xl shadow-2xl border border-slate-100 overflow-hidden p-2">
-                  {services.map((item) => (
-                    <Link key={item} href="#" className="block px-4 py-2 text-sm text-brand-purple hover:bg-slate-50 hover:text-brand-green rounded-lg font-bold transition-colors">{item}</Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <NavLink href="/articles" label="Artikel" isScrolled={isScrolled} />
-
-            <Link href="/contact" className="px-6 py-2 bg-brand-green hover:bg-brand-purple text-white text-xs font-black rounded-full transition-all uppercase tracking-tight">Contact Us</Link>
-          </div>
-
-          {/* Mobile Toggle */}
-          <button className={`md:hidden p-2 rounded-lg ${isScrolled ? "text-brand-purple" : "text-brand-green"}`} onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-
-        {/* Mobile Sidebar */}
-        <div className={`md:hidden fixed inset-0 top-0 bg-white transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"} z-[60]`}>
-           {/* ... Konten mobile menu sama seperti sebelumnya ... */}
-           <div className="flex flex-col h-full p-8">
-            <div className="flex justify-between items-center mb-12">
-              <div className="h-8 w-32 relative"><Image src="/images/logo.png" alt="Logo" fill className="object-contain" /></div>
-              <button onClick={() => setIsOpen(false)} className="text-brand-purple"><X size={32} /></button>
-            </div>
-            <div className="flex flex-col gap-6">
-              <Link href="/" className="text-3xl font-black text-brand-purple" onClick={() => setIsOpen(false)}>Home</Link>
-              <Link href="/about" className="text-3xl font-black text-brand-purple" onClick={() => setIsOpen(false)}>Tentang Kami</Link>
-              <div className="space-y-4 border-l-4 border-brand-green pl-6 py-2">
-                {services.map(s => <Link key={s} href="#" className="block text-lg font-bold text-slate-600" onClick={() => setIsOpen(false)}>{s}</Link>)}
-              </div>
-              <Link href="/contact" className="mt-4 w-full py-4 bg-brand-purple text-center text-white rounded-2xl font-black text-xl" onClick={() => setIsOpen(false)}>Contact Us</Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </header>
+    </>
   );
 };
 

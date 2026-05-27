@@ -1,4 +1,4 @@
-import AboutHero from '@/components/about/AboutHero';
+import AboutHero from '@/components/PageHero';
 import AboutStory from '@/components/about/Story';
 import AboutAdvantages from '@/components/about/Advantages';
 import AboutTeam from '@/components/about/Team';
@@ -49,7 +49,7 @@ export default function AboutPage() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
 
-            <AboutHero />
+            <AboutHero title="Tentang Kami" />
             <AboutStory />
             <AboutAdvantages />
             <AboutTeam />

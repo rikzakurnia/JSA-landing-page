@@ -67,10 +67,17 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <Navbar/>
-      <body className="min-h-full flex flex-col">{children}</body>
-      <Footer/>
-      <WhatsAppFloating></WhatsAppFloating>
+      <body className="min-h-full flex flex-col">
+        <Navbar />
+        
+
+        <main className="flex-grow">
+          {children}
+        </main>
+        
+        <Footer />
+        <WhatsAppFloating />
+      </body>
     </html>
   );
 }
