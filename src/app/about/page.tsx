@@ -20,9 +20,9 @@ export default function AboutPage() {
         '@context': 'https://schema.org',
         '@type': 'LocalBusiness',
         name: 'CV Jasa Sukses Abadi',
-        image: 'https://www.jasasuksesabadi.id/images/logo.png', // Sesuaikan URL
-        '@id': 'https://www.jasasuksesabadi.id',
-        url: 'https://www.jasasuksesabadi.id',
+        image: 'https://www.jasasuksesabadi.com/images/logo.png', // Sesuaikan URL
+        '@id': 'https://www.jasasuksesabadi.com',
+        url: 'https://www.jasasuksesabadi.com',
         telephone: '+6281213135257',
         email: 'jsa.lpg@gmail.com',
         address: {

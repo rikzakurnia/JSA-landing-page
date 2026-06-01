@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://www.jasasuksesabadi.id/sitemap.xml',
+    sitemap: 'https://www.jasasuksesabadi.com/sitemap.xml',
   }
 }

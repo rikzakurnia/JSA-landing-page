@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.jasasuksesabadi.id';
+  // Pastikan domain ini sesuai dengan domain yang kamu gunakan
+  const baseUrl = 'https://www.jasasuksesabadi.com';
   
   return [
     {
@@ -22,13 +23,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.9, 
     },
+    // Menambahkan halaman detail layanan
+    {
+      url: `${baseUrl}/services/kalibrasi`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/services/tera`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/services/konsultan`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/services/training`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/services/maintenance-repair`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
     {
       url: `${baseUrl}/contact`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.5,
     },
-    // Nanti kalau halaman detail layanannya sudah siap, bisa dilooping di sini
-    // contoh: /services/kalibrasi, /services/tera, dst.
   ]
 }
