@@ -39,10 +39,10 @@ const Footer = () => {
               Memberikan solusi kalibrasi yang akurat dan terpercaya. Kami berkomitmen untuk menjaga standar industri melalui pengujian yang presisi.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-white/40 hover:text-brand-green transition-colors">
+              <a href="https://www.instagram.com/labkalibrasi.jsa/" target="_blank" rel="noopener noreferrer" aria-label="Instagram CV Jasa Sukses Abadi" className="text-white/40 hover:text-brand-green transition-colors">
                 <InstagramIcon className="w-5 h-5" />
               </a>
-              <a href="#" className="text-white/40 hover:text-brand-green transition-colors">
+              <a href="https://www.tiktok.com/@cv_jasa_sukses_abadi" target="_blank" rel="noopener noreferrer" aria-label="TikTok CV Jasa Sukses Abadi" className="text-white/40 hover:text-brand-green transition-colors">
                 <TiktokIcon className="w-5 h-5" />
               </a>
             </div>
@@ -67,10 +67,10 @@ const Footer = () => {
               Layanan Utama
             </h4>
             <ul className="space-y-4 text-sm font-bold text-slate-300">
-              <li className="hover:text-white cursor-pointer transition-colors">Kalibrasi Industri</li>
-              <li className="hover:text-white cursor-pointer transition-colors">Tera & Tera Ulang</li>
-              <li className="hover:text-white cursor-pointer transition-colors">Training ISO 17025</li>
-              <li className="hover:text-white cursor-pointer transition-colors">Maintenance Alat</li>
+              <li><Link href="/services/kalibrasi" className="hover:text-white transition-colors">Kalibrasi Industri</Link></li>
+              <li><Link href="/services/tera" className="hover:text-white transition-colors">Tera & Tera Ulang</Link></li>
+              <li><Link href="/services/training" className="hover:text-white transition-colors">Training ISO 17025</Link></li>
+              <li><Link href="/services/maintenance-repair" className="hover:text-white transition-colors">Maintenance Alat</Link></li>
             </ul>
           </div>
 

@@ -44,7 +44,7 @@ const About = () => {
           <div className="space-y-2">
             <span className="text-brand-green font-black text-xs uppercase">Tentang JSA</span>
             <h2 className="text-4xl md:text-4xl font-black text-brand-purple leading-tight">
-              Introduction
+              Lab Kalibrasi Terpercaya di Lampung
             </h2>
           </div>
 
