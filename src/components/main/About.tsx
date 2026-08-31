@@ -63,8 +63,8 @@ const About = () => {
           {/* Accreditation Footer */}
           <div className="pt-4 flex items-center gap-6 border-t border-slate-100 mt-4">
              {/* Gunakan placeholder atau logo KAN asli jika ada */}
-             <div className="flex-shrink-0 w-16 h-16 bg-slate-50 rounded-xl flex items-center justify-center border border-slate-200 p-1">
-                <img src='/images/logo-kan.webp' ></img>
+             <div className="relative flex-shrink-0 w-16 h-16 bg-slate-50 rounded-xl flex items-center justify-center border border-slate-200 p-2">
+                <Image src="/images/logo-kan.webp" alt="Logo KAN" fill className="object-contain p-2" />
              </div>
              <div>
                <p className="text-brand-purple font-black text-md">Terakreditasi KAN</p>

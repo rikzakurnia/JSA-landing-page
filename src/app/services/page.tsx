@@ -199,7 +199,7 @@ export default function ServicesPage() {
       <section className="max-w-4xl mx-auto px-6 py-20 -mb-10 text-center">
         <h2 className="text-2xl md:text-3xl font-black text-brand-purple mb-4">Punya Kebutuhan Kalibrasi Khusus?</h2>
         <p className="text-slate-500 mb-8">Diskusikan alat dan sistem mutu di tempat Anda dengan tim ahli kami sekarang juga.</p>
-        <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-brand-green hover:bg-brand-purple text-white font-bold rounded-xl transition-all duration-300 shadow-lg shadow-brand-green/30 hover:-translate-y-1">
+        <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-brand-green hover:bg-brand-purple text-white font-bold rounded-full transition-all duration-300 shadow-lg shadow-brand-green/30 hover:-translate-y-1">
           Hubungi Kami <ArrowRight size={20} />
         </Link>
       </section>
